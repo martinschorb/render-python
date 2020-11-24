@@ -138,7 +138,7 @@ def tilePairClient(stack, minz, maxz, outjson=None, delete_json=False,
                    subprocess_mode=None,
                    host=None, port=None, owner=None, project=None,
                    client_script=None, memGB=None,
-                   render=None, **kwargs):
+                   render=None,maxPairsPerFile=None, **kwargs):
     """run TilePairClient.java
     see render documentation (#add link here)
 
@@ -191,6 +191,8 @@ def tilePairClient(stack, minz, maxz, outjson=None, delete_json=False,
         minimum y bound from which tile 'p' is selected
     maxy : float
         maximum y bound from wich tile 'p' is selected
+    maxPairsPerFile : int
+        split the json output file when this numer of pairs is reached
 
     Returns
     -------
@@ -221,7 +223,8 @@ def tilePairClient(stack, minz, maxz, outjson=None, delete_json=False,
                        '--excludePairsInMatchCollection') +
              ['--toJson', outjson] +
              get_param(minx, '--minX') + get_param(maxx, '--maxX') +
-             get_param(miny, '--minY') + get_param(maxy, '--maxY'))
+             get_param(miny, '--minY') + get_param(maxy, '--maxY') +
+             get_param(maxPairsPerFile, '--maxPairsPerFile'))
 
     call_run_ws_client('org.janelia.render.client.TilePairClient',
                        memGB=memGB, client_script=client_script,
