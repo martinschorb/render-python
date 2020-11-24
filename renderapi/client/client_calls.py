@@ -231,12 +231,12 @@ def tilePairClient(stack, minz, maxz, outjson=None, delete_json=False,
                        subprocess_mode=subprocess_mode,
                        add_args=argvs, **kwargs)
 
-    with open(outjson, 'r') as f:
-        jsondata = json.load(f)
+    # with open(outjson, 'r') as f:
+    #     jsondata = json.load(f)
 
-    if delete_json:
-        os.remove(outjson)
-    return jsondata
+    # if delete_json:
+    #     os.remove(outjson)
+    # return jsondata
 
 
 @renderclientaccess
